@@ -36,8 +36,11 @@ DJANGO_APPS = [
 ]
 
 LOCAL_APPS = [
-    'accaunts',
     'common',
+    'accaunts',
+    'orders',
+    'payments',
+    'products',
 ]
 
 WXTERNAL_APPS = [
