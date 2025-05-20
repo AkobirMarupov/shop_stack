@@ -43,12 +43,14 @@ LOCAL_APPS = [
     'products',
 ]
 
-WXTERNAL_APPS = [
+EXTERNAL_APPS = [
     'rest_framework',
+    'rest_framework_simplejwt',
+    'drf_yasg',
+    'jazzmin',
 ]
 
-
-INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + WXTERNAL_APPS
+INSTALLED_APPS = LOCAL_APPS + EXTERNAL_APPS + DJANGO_APPS
 
 
 MIDDLEWARE = [
@@ -94,6 +96,27 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT'),
     }
 }
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'Bearer': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header',
+            'description': 'JWT Authorization header. Example: Bearer <your_token>',
+        },
+    },
+    'USE_SESSION_AUTH': False,
+}
+
 
 
 

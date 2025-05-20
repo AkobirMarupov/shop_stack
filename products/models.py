@@ -13,8 +13,8 @@ class Product(BaseModel):
     category = models.ForeignKey('products.Category', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
-        return self.name
-    
+        return f"{self.name}"
+
 
 class ProductVariant(BaseModel):
     name = models.CharField(max_length=255, null=False, blank=False)
@@ -24,28 +24,28 @@ class ProductVariant(BaseModel):
     stock = models.IntegerField(default=0, null=False, blank=False)
     color = models.ForeignKey('products.Color', on_delete=models.SET_NULL, null=True, blank=True)
     size = models.ForeignKey('products.Size', on_delete=models.SET_NULL, null=True, blank=True)
-    is_active = models.BooleanField(default=True)  
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
-        return f'{self.product.name} - {self.price}'
-
+        return f"{self.product.name} - {self.price}"
+    
 
 class Brand(BaseModel):
     name = models.CharField(max_length=255, null=False, blank=False)
     slug = models.SlugField(null=False, blank=False, unique=True)
+    logo = models.ImageField(upload_to='brands', null=True, blank=True)
 
     def __str__(self):
         return self.name
+    
 
-    
-    
 class Category(BaseModel):
     name = models.CharField(max_length=255, null=False, blank=False)
     slug = models.SlugField(null=False, blank=False, unique=True)
 
     def __str__(self):
         return self.name
-
+    
 
 class Size(BaseModel):
     name = models.CharField(max_length=255, null=False, blank=False)
@@ -53,7 +53,7 @@ class Size(BaseModel):
 
     def __str__(self):
         return self.name
-    
+
 
 class Color(BaseModel):
     name = models.CharField(max_length=255, null=False, blank=False)
