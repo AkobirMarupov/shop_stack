@@ -9,6 +9,12 @@ from products.api_endpoints.ColorCreate.views import *
 from products.api_endpoints.ColorUpdate.views import *
 from products.api_endpoints.ColorDelete.views import *
 from products.api_endpoints.ColorList.views import *
+from products.api_endpoints.SizeList.views import *
+from products.api_endpoints.SizeCreate.views import *
+from products.api_endpoints.SizeDelete.views import *
+from products.api_endpoints.SizeUpdate.views import *
+from products.api_endpoints.BrandCreate.views import *
+
 
 
 urlpatterns = [
@@ -21,11 +27,19 @@ urlpatterns = [
     path('categories/<str:slug>/', CategoryRetrieveAPIView.as_view(), name="category-detail"),
     path('categories/<str:slug>/update/', CategoryUpdateAPIView.as_view(), name= 'category-update'),
     path('categories/<int:pk>/delete/', CategoryDeleteAPIView.as_view(), name='category-delete'),
-    path('colors/', ColorListAPIView.as_view(), name="color-list"),
+    
     path('colors/create/', ColorCreateAPIView.as_view(), name="color-list"),
     path('colors/<str:slug>/', ColorRetrieveAPIView.as_view(), name="color-detail"),
     path('colors/<str:slug>/update/', ColorUpdateAPIView.as_view(), name="color-update"),
     path('colors/<int:pk>/delete/', ColorDeleteAPIView.as_view(), name='color-delete'),
+
+    path('sizes/', SizeListAPIView.as_view(), name="size-list"),
+    path('sizes/create/', SizeCreateAPIView.as_view(), name="size-create"),
+    path('sizes/<int:pk>/', SizeRetrieveAPIView.as_view(), name="size-detail"),
+    path('sizes/<int:pk>/delete/', SizeDeleteAPIView.as_view(), name='size-delete'),
+    path('sizes/<int:pk>/update/', SizeUpdateAPIView.as_view(), name='size-update'),
+
+    path('brands/create/', BrandCreateAPIView.as_view(), name="brand-list"),
 ]
 
 

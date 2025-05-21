@@ -8,3 +8,5 @@ class ColorDeleteAPIView(DestroyAPIView):
     queryset = Color.objects.all()
     serializer_class = ColorDeleteSerializer
     permission_classes = ['pk']
+
+    
