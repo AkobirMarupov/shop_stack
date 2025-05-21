@@ -14,6 +14,8 @@ from products.api_endpoints.SizeCreate.views import *
 from products.api_endpoints.SizeDelete.views import *
 from products.api_endpoints.SizeUpdate.views import *
 from products.api_endpoints.BrandCreate.views import *
+from products.api_endpoints.BrandUpdate.views import *
+from products.api_endpoints.BrandList.views import *
 
 
 
@@ -39,7 +41,11 @@ urlpatterns = [
     path('sizes/<int:pk>/delete/', SizeDeleteAPIView.as_view(), name='size-delete'),
     path('sizes/<int:pk>/update/', SizeUpdateAPIView.as_view(), name='size-update'),
 
+    
+    path('brands/', BrandListAPIView.as_view(), name="brand-list"),
     path('brands/create/', BrandCreateAPIView.as_view(), name="brand-list"),
+    path('brands/<int:pk>/', BrandRetrieveAPIView.as_view(), name="brand-detail"),
+    path('brands/<int:pk>/update', BrandUpdateAPIView.as_view(), name="brand-detail"),
 ]
 
 
