@@ -26,6 +26,7 @@ class ProductVariant(BaseModel):
     size = models.ForeignKey('products.Size', on_delete=models.SET_NULL, null=True, blank=True)
     is_active = models.BooleanField(default=True)
 
+
     def __str__(self):
         return f"{self.product.name} - {self.price}"
     

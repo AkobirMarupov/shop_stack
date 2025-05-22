@@ -1,21 +1,29 @@
 from django.urls import path
 
 from products.api_endpoints import *
-from products.api_endpoints.CategoryCreate.views import *
-from products.api_endpoints.CategoryDelete.views import *
-from products.api_endpoints.CategoryUpdate.views import *
-from products.api_endpoints.CategoryList.views   import *
-from products.api_endpoints.ColorCreate.views import *
-from products.api_endpoints.ColorUpdate.views import *
-from products.api_endpoints.ColorDelete.views import *
-from products.api_endpoints.ColorList.views import *
-from products.api_endpoints.SizeList.views import *
-from products.api_endpoints.SizeCreate.views import *
-from products.api_endpoints.SizeDelete.views import *
-from products.api_endpoints.SizeUpdate.views import *
-from products.api_endpoints.BrandCreate.views import *
-from products.api_endpoints.BrandUpdate.views import *
-from products.api_endpoints.BrandList.views import *
+
+from products.api_endpoints.CategoryCRUD.CategoryCreate.views import *
+from products.api_endpoints.CategoryCRUD.CategoryDelete.views import *
+from products.api_endpoints.CategoryCRUD.CategoryUpdate.views import *
+from products.api_endpoints.CategoryCRUD.CategoryList.views   import *
+from products.api_endpoints.ColorCRUD.ColorCreate.views import *
+from products.api_endpoints.ColorCRUD.ColorUpdate.views import *
+from products.api_endpoints.ColorCRUD.ColorDelete.views import *
+from products.api_endpoints.ColorCRUD.ColorList.views import *
+from products.api_endpoints.SizeCRUD.SizeList.views import *
+from products.api_endpoints.SizeCRUD.SizeCreate.views import *
+from products.api_endpoints.SizeCRUD.SizeDelete.views import *
+from products.api_endpoints.SizeCRUD.SizeUpdate.views import *
+from products.api_endpoints.BrandCRUD.BrandCreate.views import *
+from products.api_endpoints.BrandCRUD.BrandUpdate.views import *
+from products.api_endpoints.BrandCRUD.BrandList.views import *
+from products.api_endpoints.BrandCRUD.BrandDelete.views import *
+from products.api_endpoints.VariantCRUD.VariantCreate.views import *
+from products.api_endpoints.VariantCRUD.VariantUpdate.views import *
+from products.api_endpoints.ProductCRUD.ProductCreate.views import *
+from products.api_endpoints.ProductCRUD.ProductUpdate.views import *
+from products.api_endpoints.ProductCRUD.ProductGetList.views import *
+from products.api_endpoints.ProductCRUD.ProductDelete.views import *
 
 
 
@@ -46,6 +54,16 @@ urlpatterns = [
     path('brands/create/', BrandCreateAPIView.as_view(), name="brand-list"),
     path('brands/<int:pk>/', BrandRetrieveAPIView.as_view(), name="brand-detail"),
     path('brands/<int:pk>/update', BrandUpdateAPIView.as_view(), name="brand-detail"),
+    path('brands/<int:pk>/delete/', BrandDeleteAPIView.as_view(), name='brand-delete'),
+
+    path('variants/create/', ProductVariantCreateAPIView.as_view(), name="variant-create"),
+    path('variants/<int:pk>/update/', ProductVariantUpdateAPIView.as_view(), name="variant-update"),
+
+    path('products/', ProductListGetAPIView.as_view(), name="product-list"),
+    path('products/create/', ProductCreateAPIView.as_view(), name="product-create"),
+    path('products/<int:pk>/', ProductRetrieveAPIView.as_view(), name="product-detail"),
+    path('products/<int:pk>/update/', ProductUpdateAPIView.as_view(), name="product-update"),
+    path('products/<int:pk>/delete/', ProductDeleteAPIView.as_view(), name="product-delete"),
 ]
 
 
