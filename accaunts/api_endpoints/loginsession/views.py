@@ -1,9 +1,9 @@
 from django.contrib.auth import authenticate, login
 from django.http import JsonResponse
-from django.views import ApiView
+from rest_framework.views import APIView
 from rest_framework import status
 
-class SeeionLoginAPIView(ApiView):
+class SeeionLoginAPIView(APIView):
     permisson_classes = []
 
     def post(self, request):
