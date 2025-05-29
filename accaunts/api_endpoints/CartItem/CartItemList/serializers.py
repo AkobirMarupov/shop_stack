@@ -1,16 +1,16 @@
 from rest_framework import serializers
 
+from accaunts.models import CartItem
 from products.models import ProductVariant
 
 
-class CartItemsVariantSerializers(serializers.ModelSerializer):
+class CartItemProductVariantSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductVariant
-        fields = ['id', 'name', 'price']
+        fields = ["id", "name", "price"]
 
 
-class CartItemsSerializers(serializers.Serializer):
+class CartItemSerializer(serializers.Serializer):
     id = serializers.IntegerField()
-    product = CartItemsVariantSerializers()
+    product = CartItemProductVariantSerializer()
     quantity = serializers.IntegerField()
-    
