@@ -4,3 +4,4 @@ from .CartItem.CartItemDelete.views  import *
 from .CartItem.CartItemList.views  import *
 from .logautsession.views  import *
 from .loginsession.views  import * 
+from .Profile.PsswordReset import *
