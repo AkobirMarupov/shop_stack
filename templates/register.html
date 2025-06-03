@@ -1,0 +1,16 @@
+<!-- verify_email.html -->
+<html>
+  <body>
+    <p>Assalomu alaykum {{ user.first_name|default:"foydalanuvchi" }},</p>
+
+    <p>Ro'yxatdan o'tganingiz uchun rahmat!</p>
+
+    <p>Iltimos, elektron pochtangizni tasdiqlash uchun quyidagi havolani bosing:</p>
+
+    <p>
+      <a href="{{ verify_url }}">Emailni tasdiqlash</a>
+    </p>
+
+    <p>Ushbu havola 24 soat ichida eskiradi.</p>
+  </body>
+</html>

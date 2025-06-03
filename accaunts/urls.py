@@ -4,7 +4,9 @@ from accaunts.api_endpoints import (
     SeeionLoginAPIView, SessionLogoutAPIView,
     CartItemsListAPIView, CartItemsCreateAPIView, 
     CartItemsUpdateAPIView, CartItemsDeleteAPIView,
-    PasswordResetAPIView, PasswordResetConfirmAPIView
+    PasswordResetAPIView, PasswordResetConfirmAPIView,
+    ProfileDeleteAPIView, ProfileUpdateAPIView,
+    RegisterResetAPIView, UserRegisterVerifyAPIView
 )
 
 urlpatterns = [
@@ -15,6 +17,13 @@ urlpatterns = [
     path('cart/cartitems/<int:pk>/update/', CartItemsUpdateAPIView.as_view(), name="cart-items-update"),
     path('cart/cartitems/<int:pk>/delete/', CartItemsDeleteAPIView.as_view(), name="cart-items-delete"),
 
+    path('prifile/<int:pk>/update/', ProfileUpdateAPIView.as_view(), name="profile-update"),
+    path('prifile/<int:pk>/delete/', ProfileDeleteAPIView.as_view(), name="profile-delete"),
+
     path('password-reset/request/', PasswordResetAPIView.as_view(), name='password-reset'),
-    path('password-reset/confirm/', PasswordResetConfirmAPIView.as_view(), name='passwor-reset-confirm')
+    path('password-reset/confirm/', PasswordResetConfirmAPIView.as_view(), name='passwor-reset-confirm'),
+
+    path('register/reset/', RegisterResetAPIView.as_view(), name='register-reset'),
+    path('register/vrify', UserRegisterVerifyAPIView.as_view(), name='register-vrify')
+    
 ]

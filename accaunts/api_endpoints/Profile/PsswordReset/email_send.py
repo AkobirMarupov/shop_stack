@@ -13,3 +13,4 @@ def send_password_reset_email(email, token):
     email = EmailMessage(subject, html_content, to=[to_email])
     email.content_subtype = 'html'
     email.send()
+    
