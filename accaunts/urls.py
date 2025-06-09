@@ -6,7 +6,7 @@ from accaunts.api_endpoints import (
     CartItemsUpdateAPIView, CartItemsDeleteAPIView,
     PasswordResetAPIView, PasswordResetConfirmAPIView,
     ProfileDeleteAPIView, ProfileUpdateAPIView,
-    RegisterResetAPIView, UserRegisterVerifyAPIView
+    RegisterUserAPIView, RegisterConfirmAPIView
 )
 
 urlpatterns = [
@@ -23,7 +23,7 @@ urlpatterns = [
     path('password-reset/request/', PasswordResetAPIView.as_view(), name='password-reset'),
     path('password-reset/confirm/', PasswordResetConfirmAPIView.as_view(), name='passwor-reset-confirm'),
 
-    path('register/reset/', RegisterResetAPIView.as_view(), name='register-reset'),
-    path('register/vrify', UserRegisterVerifyAPIView.as_view(), name='register-vrify')
+    path('register/user/', RegisterUserAPIView.as_view(), name='register-user'),
+    path('register/confirm', RegisterConfirmAPIView.as_view(), name='register-confirm')
     
 ]

@@ -7,4 +7,4 @@ from .loginsession.views  import *
 from .Profile.PsswordReset.views import *
 from .Profile.ProfileDelete.views import *
 from .Profile.ProfileUpdate.views import *
-from .Profile.RegisterReset.views import *
+from .Profile.Register.views import *

@@ -1,5 +1,6 @@
 from django.db import models
 
+from accaunts.models import User
 from common.models import BaseModel
 
 
@@ -62,3 +63,13 @@ class Color(BaseModel):
 
     def __str__(self):
         return self.name
+    
+
+class ProductRewiev(BaseModel):
+    product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='reviews')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)]) 
+    comment = models.TextField(blank=True)
+
+    def __str__(self):
+        return self.product

@@ -1,16 +1,36 @@
-<!-- verify_email.html -->
-<html>
-  <body>
-    <p>Assalomu alaykum {{ user.first_name|default:"foydalanuvchi" }},</p>
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
 
-    <p>Ro'yxatdan o'tganingiz uchun rahmat!</p>
+{% block title %}Shop_Stack | Register{% endblock title %}
 
-    <p>Iltimos, elektron pochtangizni tasdiqlash uchun quyidagi havolani bosing:</p>
+{% block content %}
 
-    <p>
-      <a href="{{ verify_url }}">Emailni tasdiqlash</a>
-    </p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col">
+                        {{ form.first_name|as_crispy_field }}
+                    </div>
+                    <div class="col">
+                        {{ form.last_name|as_crispy_field }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ form.email|as_crispy_field }}
+                </div>
+                <div class="form-group">
+                    {{ form.password1|as_crispy_field }}
+                </div>
+                <div class="form-group">
+                    {{ form.password2|as_crispy_field }}
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
 
-    <p>Ushbu havola 24 soat ichida eskiradi.</p>
-  </body>
-</html>
+{% endblock content %}
