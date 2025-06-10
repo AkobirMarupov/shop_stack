@@ -35,8 +35,8 @@ class RegisterUserAPIView(APIView):
                 existing.save()
                 
                 send_email(
-                    subject="Parolingizni qayta o'rnating",
-                    intro_text='Parolni tiklash uchun quyidagi havolani bosing.',
+                    subject="Tasdiqlash havolasi orqali prolinigizga start bering",
+                    intro_text='Tasdiqlash uchun quyidagi havolani bosing.',
                 email=email,
                 token=token,
                 template='email/reset_password_email.html',
@@ -60,7 +60,7 @@ class RegisterUserAPIView(APIView):
 
         send_email(
             subject="Parolingizni qayta o'rnating", 
-            intro_text="Parolingizni tiklash uchun quyidagi havolani bosing.", 
+            intro_text="Tasdiqlash uchun quyidagi havolani bosing.", 
             email=email, 
             token=token, 
             template="email/reset_password_email.html",
@@ -71,7 +71,6 @@ class RegisterUserAPIView(APIView):
             status=status.HTTP_201_CREATED
         )
     
-
 class RegisterConfirmAPIView(APIView):
     permission_classes = []
 
@@ -80,7 +79,7 @@ class RegisterConfirmAPIView(APIView):
         token = request.data.get('token')
 
         if not token:
-            return Response({'detail': 'Token talab olishingiz qilinadi.'}, status= status.HTTP_400_BAD_REQUEST)
+            return Response({'detail': 'Token talab qilinadi.'}, status= status.HTTP_400_BAD_REQUEST)
         
         user_id = verify_email_confirm_token(token)
         
