@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 from accaunts.models import User
 from common.models import BaseModel
@@ -65,11 +66,21 @@ class Color(BaseModel):
         return self.name
     
 
-class ProductRewiev(BaseModel):
-    product = models.ForeignKey('Product', on_delete=models.CASCADE, related_name='reviews')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)]) 
-    comment = models.TextField(blank=True)
+class Review(BaseModel):
+    product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
+    user = models.ForeignKey('accaunts.User', on_delete=models.SET_NULL, null=True, blank=True)
+    rating = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(5)])
+    review = models.TextField(max_length=100, null=False, blank=False)
 
     def __str__(self):
-        return self.product
+        return f'Review({self.id})'
+    
+class Commint(BaseModel):
+    product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
+    user = models.ForeignKey('accaunts.User', on_delete=models.SET_NULL, null=True, blank=True)
+    commint = models.TextField(max_length=1000, null=False, blank=False)
+    parent = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='replies')
+
+    def __str__(self):
+        return f'Commint({self.id})'
+    

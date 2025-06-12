@@ -99,5 +99,3 @@ class RegisterConfirmAPIView(APIView):
         user.save()
 
         return Response({"detail": "Elektron pochta muvaffaqiyatli tasdiqlandi."}, status=status.HTTP_200_OK)
-
-    

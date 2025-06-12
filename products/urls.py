@@ -26,6 +26,9 @@ from products.api_endpoints.ProductCRUD.ProductGetList.views import *
 from products.api_endpoints.ProductCRUD.ProductDelete.views import *
 from products.api_endpoints.VariantCRUD.VariantDelete.views import *
 from products.api_endpoints.VariantCRUD.VariantList.views import *
+from products.api_endpoints.ReviewCommint.ReviewCommintCreatr.views import *
+from products.api_endpoints.ReviewCommint.ReviewCommintDelete.views import *
+
 
 
 
@@ -69,6 +72,9 @@ urlpatterns = [
     path('products/<int:pk>/', ProductRetrieveAPIView.as_view(), name="product-detail"),
     path('products/<int:pk>/update/', ProductUpdateAPIView.as_view(), name="product-update"),
     path('products/<int:pk>/delete/', ProductVariantDeleteAPIView.as_view(), name="product-delete"),
+
+    path('reviews/create/', ReviewCreateAPIView.as_view(), name="review-create"),
+    path('reviews/delete/<int:pk>/', ReviewDeleteAPIView.as_view(), name="review-delete"),
 ]
 
 

@@ -44,3 +44,19 @@ class ColorAdmin(admin.ModelAdmin):
     list_display = ("id", "name")
     list_display_links = ("id", "name")
     search_fields = ("name",)
+
+
+
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ("id", "rating", "user__email", "product__name")
+    list_display_links = ("id", "rating", "user__email")
+    search_fields = ("user__email",)
+
+
+@admin.register(Commint)
+class CommintAdmin(admin.ModelAdmin):
+    list_display = ("id", "user__email", "product__name", "commint")
+    list_display_links = ("id", "user__email")
+    search_fields = ("user__email",)
+    

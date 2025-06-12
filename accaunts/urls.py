@@ -8,6 +8,9 @@ from accaunts.api_endpoints import (
     ProfileDeleteAPIView, ProfileUpdateAPIView,
     RegisterUserAPIView, RegisterConfirmAPIView
 )
+from products.api_endpoints.ReviewCommint.ReviewCommintCreatr.views import *
+from products.api_endpoints.ReviewCommint.ReviewCommintDelete.views import *
+from products.api_endpoints.ReviewCommint.ReviewCommintList.views import *
 
 urlpatterns = [
     path('login/', SeeionLoginAPIView.as_view(), name="login-session"),
@@ -24,6 +27,10 @@ urlpatterns = [
     path('password-reset/confirm/', PasswordResetConfirmAPIView.as_view(), name='passwor-reset-confirm'),
 
     path('register/user/', RegisterUserAPIView.as_view(), name='register-user'),
-    path('register/confirm', RegisterConfirmAPIView.as_view(), name='register-confirm')
+    path('register/confirm', RegisterConfirmAPIView.as_view(), name='register-confirm'),
+
+    # Review and Commint Endpoints
+    path('reviews/', UserReviewListAPIView.as_view(), name="user-review-list"),
+    path('commint/', UserCommintListAPIView.as_view(), name="user-commint-list"),
     
 ]
