@@ -1,5 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
+from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
+from datetime import timedelta
 
 from common.models import BaseModel
 from accaunts.manager import UserManager
@@ -13,6 +16,7 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
     last_name = models.CharField(max_length=30, null=True, blank=True)
     avatar = models.ImageField(upload_to='avatars', null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
+    saved_products = models.ManyToManyField('products.Product', related_name='saved_by_users')
     is_confirmed = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -24,6 +28,10 @@ class User(AbstractBaseUser, PermissionsMixin, BaseModel):
 
     def __str__(self):
         return self.email
+    
+    class Meta:
+        verbose_name = _("User")
+        verbose_name_plural = _("Users")
     
 
 class Cart(BaseModel):
@@ -40,3 +48,22 @@ class CartItem(BaseModel):
 
     def __str__(self):
         return f"CartItem({self.id})"
+    
+
+class Story(BaseModel):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='stories')
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    image = models.ImageField(upload_to='stories/images/', null=True, blank=True)
+    video = models.FileField(upload_to='stories/videos/', null=True, blank=True)
+    expires_at = models.DateTimeField(default=timezone.now() + timedelta(hours=24))
+
+
+    def __str__(self):
+        return self.title
+
+    def is_expired(self):
+        return timezone.now() > self.expires_at
+
+    def view_count(self):
+        return self.views.count()

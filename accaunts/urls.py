@@ -1,16 +1,15 @@
 from django.urls import path
 
 from accaunts.api_endpoints import (
-    SeeionLoginAPIView, SessionLogoutAPIView,
-    CartItemsListAPIView, CartItemsCreateAPIView, 
-    CartItemsUpdateAPIView, CartItemsDeleteAPIView,
-    PasswordResetAPIView, PasswordResetConfirmAPIView,
-    ProfileDeleteAPIView, ProfileUpdateAPIView,
-    RegisterUserAPIView, RegisterConfirmAPIView
+    SeeionLoginAPIView, SessionLogoutAPIView, StoryListAPIView, StoryDetailAPIView,
+    CartItemsListAPIView, CartItemsCreateAPIView, CartItemsUpdateAPIView, CartItemsDeleteAPIView,
+    PasswordResetAPIView, PasswordResetConfirmAPIView,ProfileDeleteAPIView, ProfileUpdateAPIView,
+    RegisterUserAPIView, RegisterConfirmAPIView,SavedProductsListAPIView, SaveProductAPIView,
 )
 from products.api_endpoints.ReviewCommint.ReviewCommintCreatr.views import *
 from products.api_endpoints.ReviewCommint.ReviewCommintDelete.views import *
 from products.api_endpoints.ReviewCommint.ReviewCommintList.views import *
+
 
 urlpatterns = [
     path('login/', SeeionLoginAPIView.as_view(), name="login-session"),
@@ -32,5 +31,12 @@ urlpatterns = [
     # Review and Commint Endpoints
     path('reviews/', UserReviewListAPIView.as_view(), name="user-review-list"),
     path('commint/', UserCommintListAPIView.as_view(), name="user-commint-list"),
+
+    # Save and List Products Endpoints
+    path('saved-products/', SavedProductsListAPIView.as_view(), name="saved-products-list"),
+    path('save-product/', SaveProductAPIView.as_view(), name="save-product"),
     
+    # Story 
+    path('stories/', StoryListAPIView.as_view(), name="story-list"),
+    path('stories/<int:id>/', StoryDetailAPIView.as_view(), name="story-detail"),
 ]

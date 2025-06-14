@@ -8,3 +8,6 @@ from .Profile.PsswordReset.views import *
 from .Profile.ProfileDelete.views import *
 from .Profile.ProfileUpdate.views import *
 from .Profile.Register.views import *
+from .SavedList.views import *
+from .SaveProduct.views import *
+from .Storis.StorisList.views import *

@@ -67,8 +67,8 @@ class Color(BaseModel):
     
 
 class Review(BaseModel):
-    product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
-    user = models.ForeignKey('accaunts.User', on_delete=models.SET_NULL, null=True, blank=True)
+    product = models.ForeignKey('products.Product', on_delete=models.CASCADE, related_name='reviews')
+    user = models.ForeignKey('accaunts.User', on_delete=models.SET_NULL, null=True, blank=True, related_name='reviews')
     rating = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(5)])
     review = models.TextField(max_length=100, null=False, blank=False)
 
@@ -76,8 +76,8 @@ class Review(BaseModel):
         return f'Review({self.id})'
     
 class Commint(BaseModel):
-    product = models.ForeignKey('products.Product', on_delete=models.CASCADE)
-    user = models.ForeignKey('accaunts.User', on_delete=models.SET_NULL, null=True, blank=True)
+    product = models.ForeignKey('products.Product', on_delete=models.CASCADE, related_name='commints')
+    user = models.ForeignKey('accaunts.User', on_delete=models.SET_NULL, null=True, blank=True, related_name='commints') 
     commint = models.TextField(max_length=1000, null=False, blank=False)
     parent = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='replies')
 

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
-from accaunts.models import User, Cart, CartItem
+from accaunts.models import User, Cart, CartItem, Story
 
 
 class CartItemInline(admin.TabularInline):
@@ -41,3 +41,13 @@ class CartAdmin(admin.ModelAdmin):
     search_fields = ("user",)
 
     inlines = [CartItemInline]
+
+
+@admin.register(Story)
+class StoryAdmin(admin.ModelAdmin):
+    list_display = ("id", "user", "title", "expires_at", 'video', 'image')
+    list_display_links = ("id", "user", "title")
+    search_fields = ("user__email", "title")
+    list_filter = ("expires_at",)
+    
+    
