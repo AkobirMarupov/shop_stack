@@ -8,3 +8,9 @@ class ReviewDeleteAPIView(DestroyAPIView):
     queryset = Review.objects.all()
     permission_classes = [permissions.IsAdminUser]
     lookup_field = 'id'
+
+
+class CommintDeleteAPIView(DestroyAPIView):
+    queryset = Commint.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
+    lookup_field = 'id'

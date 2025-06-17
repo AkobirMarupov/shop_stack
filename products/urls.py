@@ -28,6 +28,9 @@ from products.api_endpoints.VariantCRUD.VariantDelete.views import *
 from products.api_endpoints.VariantCRUD.VariantList.views import *
 from products.api_endpoints.ReviewCommint.ReviewCommintCreatr.views import *
 from products.api_endpoints.ReviewCommint.ReviewCommintDelete.views import *
+from products.api_endpoints.ReviewCommint.ReviewCommentUpdate.views import *
+from products.api_endpoints.ReviewCommint.ReviewCommintList.views import *
+
 
 
 
@@ -73,8 +76,17 @@ urlpatterns = [
     path('products/<int:pk>/update/', ProductUpdateAPIView.as_view(), name="product-update"),
     path('products/<int:pk>/delete/', ProductVariantDeleteAPIView.as_view(), name="product-delete"),
 
+    path('reviews/', UserReviewListAPIView.as_view(), name="user-review-list"),
     path('reviews/create/', ReviewCreateAPIView.as_view(), name="review-create"),
-    path('reviews/delete/<int:pk>/', ReviewDeleteAPIView.as_view(), name="review-delete"),
+    path('reviews/delete/<int:id>/', ReviewDeleteAPIView.as_view(), name="review-delete"),
+    path('reviews/update/<int:id>/', ReviewUpdateAPIView.as_view(), name="review-update"),
+
+    #comment
+    path('commints/create/', CommintCreateAPIView.as_view(), name="commint-create"),
+    path('commints/delete/<int:id>/', CommintDeleteAPIView.as_view(), name="commint-delete"), 
+    path('commints/', UserCommintListAPIView.as_view(), name="user-commint-list"),
+    path('commints/update/<int:id>/', CommintUpdateAPIView.as_view(), name="commint-update"),  
+
 ]
 
 

@@ -5,6 +5,7 @@ from accaunts.api_endpoints import (
     CartItemsListAPIView, CartItemsCreateAPIView, CartItemsUpdateAPIView, CartItemsDeleteAPIView,
     PasswordResetAPIView, PasswordResetConfirmAPIView,ProfileDeleteAPIView, ProfileUpdateAPIView,
     RegisterUserAPIView, RegisterConfirmAPIView,SavedProductsListAPIView, SaveProductAPIView,
+    StoryCreateAPIView, StoryDeleteAPIView, StoryUpdateAPIView
 )
 from products.api_endpoints.ReviewCommint.ReviewCommintCreatr.views import *
 from products.api_endpoints.ReviewCommint.ReviewCommintDelete.views import *
@@ -38,5 +39,8 @@ urlpatterns = [
     
     # Story 
     path('stories/', StoryListAPIView.as_view(), name="story-list"),
+    path('stories/create/', StoryCreateAPIView.as_view(), name="story-create"),
     path('stories/<int:id>/', StoryDetailAPIView.as_view(), name="story-detail"),
+    path('stories/<int:id>/update/', StoryUpdateAPIView.as_view(), name="story-update"),
+    path('stories/<int:id>/delete/', StoryDeleteAPIView.as_view(), name="story-delete"),
 ]

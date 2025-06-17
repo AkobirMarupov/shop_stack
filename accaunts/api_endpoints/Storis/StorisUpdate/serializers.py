@@ -3,7 +3,7 @@ from rest_framework import serializers
 from accaunts.models import Story
 
 
-class StoryCreateSerializer(serializers.ModelSerializer):
+class StoryUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Story
         fields = [

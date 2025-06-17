@@ -11,3 +11,6 @@ from .Profile.Register.views import *
 from .SavedList.views import *
 from .SaveProduct.views import *
 from .Storis.StorisList.views import *
+from .Storis.StorisCreate.views import *
+from .Storis.StorisUpdate.views import *
+from .Storis.StorisDelete.views import *
