@@ -1,6 +1,7 @@
 from django.core.signing import TimestampSigner, BadSignature, SignatureExpired
 from django.conf import settings
 
+
 signer = TimestampSigner(salt="password-reset")
 
 
