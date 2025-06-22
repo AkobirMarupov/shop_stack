@@ -14,6 +14,7 @@ class StoryCreateSerializer(serializers.ModelSerializer):
             'image',
             'video',
             'expires_at',
+            'is_active',
 ]
         read_only_fields = ['id']
 

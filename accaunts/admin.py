@@ -45,7 +45,7 @@ class CartAdmin(admin.ModelAdmin):
 
 @admin.register(Story)
 class StoryAdmin(admin.ModelAdmin):
-    list_display = ("id", "user", "title", "expires_at", 'video', 'image')
+    list_display = ("id", "user", "title", "expires_at", 'video', 'image', 'is_active')
     list_display_links = ("id", "user", "title")
     search_fields = ("user__email", "title")
     list_filter = ("expires_at",)

@@ -56,6 +56,7 @@ class Story(BaseModel):
     description = models.TextField(blank=True)
     image = models.ImageField(upload_to='stories/images/', null=True, blank=True)
     video = models.FileField(upload_to='stories/videos/', null=True, blank=True)
+    is_active = models.BooleanField(default=True)
     expires_at = models.DateTimeField(default=timezone.now() + timedelta(hours=24))
 
 
