@@ -28,9 +28,11 @@ class PasswordResetAPIView(APIView):
 
 class PasswordResetConfirmAPIView(APIView):
     permission_classes = []
+
     @swagger_auto_schema(
         request_body=PasswordResetConfirmSerializer
     )
+    
     def post(self, request):
         serializer = PasswordResetConfirmSerializer(data = request.data)
         serializer.is_valid(raise_exception=True)

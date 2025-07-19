@@ -35,12 +35,14 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
+
 LOCAL_APPS = [
     'common',
     'accaunts',
     'orders',
     'payments',
     'products',
+
 ]
 
 EXTERNAL_APPS = [
@@ -277,3 +279,8 @@ LANGUAGES = [
 MODELTRANSLATION_DEFAULT_LANGUAGE = "en"
 
 LOCALE_PATHS = [BASE_DIR / "locale"]
+
+
+# Celery settengs
+
+CELERY_BROKER_URL = 'redis://localhost:6370/0'

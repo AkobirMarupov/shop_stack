@@ -31,6 +31,8 @@ urlpatterns = [
     path('common/', include('common.urls')),
     path('b_accaunts/', include('accaunts.urls')),
     path('products/', include('products.urls')),
+    path("payments/", include("payments.urls")),
+    path("orders/", include("orders.urls")),
     path('admin/', admin.site.urls),
     
     # Swagger and Redoc URLs
